@@ -15,6 +15,12 @@ public class ClimaController {
     @Autowired
     private ClimaService climaService;
 
+    @GetMapping("/weatherjson")
+    public Mono<String> getClimaJson(@RequestParam String country, @RequestParam String token) {
+        // Token = da781857638c7d8638d6315e8acdc9b0/ Country BR
+        return climaService.getClimaJson(country, token);
+    }
+
     @GetMapping("/weather")
     public Mono<List<Clima>> getClima(@RequestParam String country, @RequestParam String token) {
         // Token = da781857638c7d8638d6315e8acdc9b0/ Country BR
