@@ -8,13 +8,19 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="eureka-service" />
+        <module name="Q2" />
         <module name="AT_SBSC" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="AT_SBSC (1)" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="AT_SBSC" options="-parameters" />
+      <module name="AT_SBSC (1)" options="-parameters" />
+      <module name="Q2" options="-parameters" />
       <module name="eureka-service" options="-parameters" />
     </option>
   </component>
