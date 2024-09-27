@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="eureka-service" />
         <module name="Q2" />
+        <module name="Q6" />
         <module name="AT_SBSC" />
       </profile>
     </annotationProcessing>
@@ -21,6 +22,7 @@
       <module name="AT_SBSC" options="-parameters" />
       <module name="AT_SBSC (1)" options="-parameters" />
       <module name="Q2" options="-parameters" />
+      <module name="Q6" options="-parameters" />
       <module name="eureka-service" options="-parameters" />
     </option>
   </component>
