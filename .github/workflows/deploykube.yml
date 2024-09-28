@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - master
-    paths:
-      - 'Q2/**'
 
 jobs:
   build:
@@ -22,13 +20,13 @@ jobs:
         java-version: '17'
 
     - name: Build with Maven
-      run: mvn -f Q2/pom.xml clean install
+      run: mvn -f Q6/pom.xml clean install
 
     - name: Log in to Docker Hub
       run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
     - name: Build Docker image
-      run: docker build -f Q2/Dockerfile Q2 -t ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPOSITORY }}:latest
+      run: docker build -f Q6/Dockerfile Q6 -t ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPOSITORY }}:latest
 
     - name: Push Docker image to Docker Hub
       run: docker push ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPOSITORY }}:latest
@@ -42,4 +40,4 @@ jobs:
     - name: Deploy to GKE
       run: |
         gcloud container clusters get-credentials <CLUSTER_NAME> --zone <ZONE>
-        kubectl apply -f Q2/Q2-deployment.yaml
+        kubectl apply -f Q6/Q6-deployment.yaml
