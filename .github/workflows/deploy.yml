@@ -2,9 +2,11 @@ name: CI Pipeline
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
   pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
 
 
 jobs:
@@ -21,13 +23,13 @@ jobs:
           java-version: '17'
 
       - name: Build with Maven
-        run: mvn -f status-service/pom.xml clean package
+        run: mvn -f q6/pom.xml clean package
 
       - name: Run tests
-        run: mvn -f status-service/pom.xml test
+        run: mvn -f q6/pom.xml test
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v3
         with:
           name: maven-build
-          path: status-service/target/*.jar
+          path: q6/target/*.jar
