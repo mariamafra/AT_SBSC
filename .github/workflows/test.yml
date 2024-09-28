@@ -1,0 +1,44 @@
+name: Build and Test Spring Boot Application
+
+
+on:
+  push:
+    branches:
+      - main
+    pull_request:
+      branches:
+        - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v1
+        with:
+          java-version: '17'
+
+#      - name: Cache Maven packages
+#        uses: actions/cache@v3
+#        with:
+#          path: |
+#            ~/.m2/repository
+#          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+#          restore-keys: |
+#            ${{ runner.os }}-maven-
+
+      - name: Build with Maven
+        run: mvn clean compile
+
+      - name: Run tests
+        run: mvn test
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifacts@v3
+        with:
+          name: maven-build
+          path: target/*.jar
