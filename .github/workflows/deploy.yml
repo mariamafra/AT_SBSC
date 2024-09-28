@@ -23,13 +23,13 @@ jobs:
           java-version: '17'
 
       - name: Build with Maven
-        run: mvn -f q6/pom.xml clean package
+        run: mvn -f Q6/pom.xml clean package
 
       - name: Run tests
-        run: mvn -f q6/pom.xml test
+        run: mvn -f Q6/pom.xml test
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v3
         with:
           name: maven-build
-          path: q6/target/*.jar
+          path: Q6/target/*.jar
